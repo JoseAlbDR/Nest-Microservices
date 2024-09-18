@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import * as joi from 'joi';
 
-interface envVars {
-  port: number;
+interface EnvVars {
+  PORT: number;
 }
 
 const envsSchema = joi
@@ -17,4 +17,8 @@ if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
 
-export const envs: envVars = value;
+const envVars: EnvVars = value;
+
+export const envs = {
+  port: envVars.PORT,
+};
